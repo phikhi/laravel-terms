@@ -5,37 +5,83 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/phikhi/laravel-terms/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/phikhi/laravel-terms/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/phikhi/laravel-terms.svg?style=flat-square)](https://packagist.org/packages/phikhi/laravel-terms)
 
-Add legal pages management and acceptation to your Laravel app
+Add legal pages management and acceptation to your Laravel app.
+
+## Compatibility
+
+> Made for any app that uses:
+> - Laravel v10.x, v11.x
+> - PHP 8.2+
+>
+> This package supports Breeze and Jetstream apps with any frontend option:
+> - Blade
+> - Livewire
+> - Inertia (React/Vue)
+
+## Todolist
+
+- [ ] Create a middleware for the terms acceptation
+- [ ] Create test suite
+- [ ] Create the install command
+- [ ] Create the publishable config file
+- [ ] Create the models:
+    - [ ] Term
+    - [ ] TermUser
+    - [ ] TermUserAcceptation
+- [ ] Create the publishable migrations:
+    - [ ] terms table
+    - [ ] term_user table
+    - [ ] term_user_acceptations table
+- [ ] Create the publishable factories:
+    - [ ] TermFactory
+    - [ ] TermUserFactory
+    - [ ] TermUserAcceptationFactory
+- [ ] Create the publishable seeders:
+    - [ ] TermsSeeder
+    - [ ] TermUserSeeder
+    - [ ] TermUserAcceptationSeeder
+- [ ] Create the publishable views:
+    - [ ] Blade components
+    - [ ] Livewire components
+    - [ ] Inertia components:
+        - [ ] ReactJS components
+        - [ ] VueJS components
 
 ## Installation
 
-You can install the package via composer:
+First, install the package via composer:
 
 ```bash
 composer require phikhi/laravel-terms
 ```
 
-You can publish and run the migrations with:
+Then, run the install command:
 
 ```bash
-php artisan vendor:publish --tag="laravel-terms-migrations"
+php artisan terms:install
+```
+
+Finally, run the migrations:
+
+```bash
 php artisan migrate
 ```
 
-You can publish the config file with:
+### Optional steps
+
+Publish the migrations with:
+
+```bash
+php artisan vendor:publish --tag="laravel-terms-migrations"
+```
+
+Publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-terms-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
+Publish the views using
 
 ```bash
 php artisan vendor:publish --tag="laravel-terms-views"
@@ -45,7 +91,6 @@ php artisan vendor:publish --tag="laravel-terms-views"
 
 ```php
 $terms = new Phikhi\Terms();
-echo $terms->echoPhrase('Hello, Phikhi!');
 ```
 
 ## Testing
